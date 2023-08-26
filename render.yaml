@@ -1,0 +1,4 @@
+build.command: >
+  cd backend &&
+  /opt/render/project/src/.venv/bin/python -m pip install --upgrade pip &&
+  /opt/render/project/src/.venv/bin/python -m pip install --no-cache-dir -r requirements.txt

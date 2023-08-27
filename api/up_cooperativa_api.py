@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.unidades_productivas.cooperativas_api import Cooperativa, CooperativaSinId, CooperativaList, CooperativaNuevoAsociado, CreateCooperativaNuevoAsociado
@@ -15,7 +16,7 @@ personas_repository = PersonasRepository()
 # Endpoints:
 
 
-@cooperativas_api.get('', response_model=list[CooperativaList])
+@cooperativas_api.get('', response_model=List[CooperativaList])
 def get_all(db=Depends(get_db)):
     cooperativas = cooperativas_repository.get_all(db)
     return cooperativas

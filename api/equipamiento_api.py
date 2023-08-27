@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.equipamiento.equipamiento_api import EquipamientoSinId, Equipamiento
@@ -14,7 +15,7 @@ equipamiento_repository = EquipamientoRepository()
 # Endpoints:
 
 
-@equipamiento_api.get('', response_model=list[Equipamiento])
+@equipamiento_api.get('', response_model=List[Equipamiento])
 def get_all(db=Depends(get_db)):
     return equipamiento_repository.get_all(db)
 

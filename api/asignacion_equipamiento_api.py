@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from models.equipamiento.asignacion_equipamiento_api import AsignacionEquipamientoSinId, AsignacionEquipamiento
 from models.equipamiento.equipamiento_api import Equipamiento
@@ -16,7 +17,7 @@ equipamiento_reposotory = EquipamientoRepository()
 # Equipamiento asignado a una UP particular:
 
 
-@asignacion_equipamiento_api.get('/equipamiento/{id_up}', response_model=list[Equipamiento])
+@asignacion_equipamiento_api.get('/equipamiento/{id_up}', response_model=List[Equipamiento])
 def get_equipamiento_up(id_up: int, db=Depends(get_db)):
     # Primero verifico que la up exista:
     if up_repository.get_by_id(id_up, db) is None:

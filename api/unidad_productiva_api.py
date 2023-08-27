@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.unidades_productivas.unidades_productivas_api import UnidadProductivaSinId, UnidadProductiva, UnidadProductivaList
@@ -13,7 +14,7 @@ up_repository = UnidadesProductivasRepository()
 # Endpoints:
 
 
-@up_api.get('', response_model=list[UnidadProductivaList])
+@up_api.get('', response_model=List[UnidadProductivaList])
 def get_all(db=Depends(get_db)):
     return up_repository.get_all(db)
 

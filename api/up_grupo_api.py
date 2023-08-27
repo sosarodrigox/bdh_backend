@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.unidades_productivas.grupos_api import Grupo, GrupoSinId, GrupoList, GrupoNuevoIntegrante, CreateGrupoNuevoIntegrante
@@ -15,7 +16,7 @@ personas_repository = PersonasRepository()
 # Endpoints:
 
 
-@grupos_api.get('', response_model=list[GrupoList])
+@grupos_api.get('', response_model=List[GrupoList])
 def get_all(db=Depends(get_db)):
     grupos = grupos_repository.get_all(db)
     return grupos

@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from models.ubicaciones.localidades_api import LocalidadSinId, Localidad, LocalidadLista
 from database import get_db
@@ -7,7 +8,7 @@ localidades_api = APIRouter(prefix='/localidades', tags=['Localidades'])
 localidad_repository = LocalidadesRepository()
 
 
-@localidades_api.get('', response_model=list[LocalidadLista])
+@localidades_api.get('', response_model=List[LocalidadLista])
 def get_all(db=Depends(get_db)):
     return localidad_repository.get_all(db)
 

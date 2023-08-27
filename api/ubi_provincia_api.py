@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.ubicaciones.provincias_api import ProvinciaSinId, Provincia
@@ -7,7 +8,7 @@ provincias_api = APIRouter(prefix='/provincias', tags=['Provincias'])
 provincias_repository = ProvinciasRepository()
 
 
-@provincias_api.get('', response_model=list[Provincia])
+@provincias_api.get('', response_model=List[Provincia])
 def get_all(db=Depends(get_db)):
     result = provincias_repository.get_all(db)
     return result

@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.proyectos.proyectos_api import ProyectoSinId, Proyecto, ProyectoList
@@ -13,7 +14,7 @@ proyecto_repository = ProyectosRepository()
 # Endpoints:
 
 
-@proyectos_api.get('', response_model=list[ProyectoList])
+@proyectos_api.get('', response_model=List[ProyectoList])
 def get_all(db=Depends(get_db)):
     return proyecto_repository.get_all(db)
 

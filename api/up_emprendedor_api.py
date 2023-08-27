@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from models.unidades_productivas.emprendedores_api import Emprendedor, EmprendedorSinId, EmprendedorList
@@ -13,7 +14,7 @@ emprendedores_repository = EmprendedoresRepository()
 # Endpoints:
 
 
-@emprendedores_api.get('', response_model=list[EmprendedorList])
+@emprendedores_api.get('', response_model=List[EmprendedorList])
 def get_all(db=Depends(get_db)):
     return emprendedores_repository.get_all(db)
 

@@ -32,7 +32,7 @@ def get_equipamiento_up(id_up: int, db=Depends(get_db)):
         return result
 
 
-@asignacion_equipamiento_api.get('', response_model=list[AsignacionEquipamiento])
+@asignacion_equipamiento_api.get('', response_model=List[AsignacionEquipamiento])
 def get_all(db=Depends(get_db)):
     return asignacion_equipamiento_repository.get_all(db)
 

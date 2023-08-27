@@ -19,17 +19,17 @@ def get_all(db=Depends(get_db)):
     return up_repository.get_all(db)
 
 
-@up_api.get('/emprendedores', response_model=list[UnidadProductivaList])
+@up_api.get('/emprendedores', response_model=List[UnidadProductivaList])
 def get_all(db=Depends(get_db)):
     return up_repository.get_emprendedores(db)
 
 
-@up_api.get('/grupos', response_model=list[UnidadProductivaList])
+@up_api.get('/grupos', response_model=List[UnidadProductivaList])
 def get_all(db=Depends(get_db)):
     return up_repository.get_grupos(db)
 
 
-@up_api.get('/cooperativas', response_model=list[UnidadProductivaList])
+@up_api.get('/cooperativas', response_model=List[UnidadProductivaList])
 def get_all(db=Depends(get_db)):
     return up_repository.get_cooperativas(db)
 

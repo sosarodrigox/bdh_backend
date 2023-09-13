@@ -1,20 +1,26 @@
-from sqlalchemy import Column, Float, ForeignKey, Integer
+from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, func, text
 from sqlalchemy.orm import relationship
 from database import BaseBd
 
 
 class AsignacionEquipamientoBd(BaseBd):
     __tablename__ = "asignacion_equipamiento"
-    id_equipamiento = Column(Integer, ForeignKey(
-        'equipamiento.id'), primary_key=True)
-    id_up = Column(Integer, ForeignKey(
-        'unidades_productivas.id'), primary_key=True)
-    cantidad = Column(Integer, nullable=False, default=0)
+    id_equipamiento = Column(Integer, ForeignKey("equipamiento.id"), primary_key=True)
+    id_up = Column(Integer, ForeignKey("unidades_productivas.id"), primary_key=True)
+    fecha_asignacion = Column(
+        DateTime,
+        server_default=text("CURRENT_TIMESTAMP"),
+        default=func.now(),
+        primary_key=True,
+    )
+    cantidad = Column(Float, nullable=False, default=0)
     valor_total = Column(Float, nullable=False, default=0.0)
 
     # Relacion con equipamiento:
     equipamiento = relationship(
-        'EquipamientoBd', passive_deletes=True, back_populates='unidad_productiva')
+        "EquipamientoBd", passive_deletes=True, back_populates="unidad_productiva"
+    )
     # Relacion con unidades productivas:
-    unidad_productiva = relationship('UnidadProductivaBd', cascade="all, delete",
-                                     back_populates='equipamiento')
+    unidad_productiva = relationship(
+        "UnidadProductivaBd", cascade="all, delete", back_populates="equipamiento"
+    )

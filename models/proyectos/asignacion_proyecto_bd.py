@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from database import BaseBd
 
 
-class AsignacionEquipamientoBd(BaseBd):
+class AsignacionProyectotoBd(BaseBd):
     __tablename__ = "asignacion_equipamiento"
     id = Column(Integer, primary_key=True, index=True)
     id_equipamiento = Column(Integer, ForeignKey("equipamiento.id"))

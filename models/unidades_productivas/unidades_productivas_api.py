@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 from models.personas.personas_api import Persona
 
@@ -13,6 +14,7 @@ class UnidadProductivaSinId(BaseModel):
     comercializacion_descripcion: str
     servicios_productos: str
     cantidad_integrantes: int = 0
+    proyecto_id: Optional[int] = None
 
     # TODO: Verificar valor default de cantidad de integrantes
 

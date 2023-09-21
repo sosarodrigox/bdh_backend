@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 from models.personas.personas_api import Persona
+
 # from typing import List
 
 
 class GrupoSinId(BaseModel):
     nombre_grupo: str
     representante_grupo_id: int
+    cantidad_integrantes: int = 0
 
     class Config:
         orm_mode = True

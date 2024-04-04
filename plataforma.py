@@ -61,6 +61,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+3
 
-if __name__ == '__main__':
-    uvicorn.run('plataforma:app', reload=True)
+if __name__ == "__main__":
+    uvicorn.run("plataforma:app", reload=True)

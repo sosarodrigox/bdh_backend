@@ -7,7 +7,7 @@ from models.personas.personas_api import Persona
 class GrupoSinId(BaseModel):
     nombre_grupo: str
     representante_grupo_id: int
-    cantidad_integrantes: int = 0
+    cantidad_integrantes: int
 
     class Config:
         orm_mode = True

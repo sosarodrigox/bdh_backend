@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 from models.personas.personas_api import Persona
+
 # from typing import List
 
 
 class CooperativaSinId(BaseModel):
     nombre_cooperativa: str
     presidente_id: int
+    cantidad_integrantes: int
 
     class Config:
         orm_mode = True

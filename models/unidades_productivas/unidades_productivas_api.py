@@ -1,6 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 from models.personas.personas_api import Persona
+from models.unidades_productivas.grupos_api import Grupo
 
 
 class UnidadProductivaSinId(BaseModel):
@@ -13,10 +14,8 @@ class UnidadProductivaSinId(BaseModel):
     emprendimiento_activo: bool
     comercializacion_descripcion: str
     servicios_productos: str
-    cantidad_integrantes: int = 0
     proyecto_id: Optional[int] = None
-
-    # TODO: Verificar valor default de cantidad de integrantes
+    grupo_id: Optional[int] = None
 
     class Config:
         orm_mode = True
@@ -25,8 +24,11 @@ class UnidadProductivaSinId(BaseModel):
 class UnidadProductiva(UnidadProductivaSinId):
     id: int
     persona: Persona
+    grupo_id: Optional[int] = None
 
 
 class UnidadProductivaList(UnidadProductivaSinId):
     id: int
     persona: Persona
+    # grupo: Optional[Grupo] = None
+    grupo: Optional[Grupo] = None
